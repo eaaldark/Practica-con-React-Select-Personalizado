@@ -32,31 +32,30 @@ const Menu = (props) => {
 };
 
 const Styles: StylesConfig = {
-  control: (...props) => {
-    console.log('holea', props);
+  control: (base) => {
+    console.clear();
+    console.log(base);
+
+    const newBase = {
+      ...base,
+      '&:hover': { borderColor: 'hsl(0, 0%, 100%)' },
+      backgroundColor: '#F8F8F8',
+      borderStyle: 'none',
+      borderRadius: 30,
+      borderColor: 'hsl(0, 0%, 100%)',
+      boxShadow: '0px 5px 10px hsl(0, 0%, 88%);',
+      minHeight: '2.5rem',
+    };
+    console.log(newBase);
+
+    return newBase;
   },
 };
 
 export default function App() {
   return (
     <div>
-      <Select
-        options={options}
-        components={{ Menu }}
-        styles={Styles}
-        // theme={(theme) => {
-        //   return {
-        //     ...theme,
-        //     borderRadius: 0,
-        //     colors: {
-        //       ...theme.colors,
-        //       text: 'ffffff',
-        //       primary25: 'blue',
-        //       primary: '#454654',
-        //     },
-        //   };
-        // }}
-      />
+      <Select options={options} styles={Styles} isClearable={true} />
     </div>
   );
 }
